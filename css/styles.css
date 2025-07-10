@@ -41,7 +41,7 @@ header {
     gap: 1rem;
 }
 
-#export-btn {
+#export-btn, #sort-ascend-btn, #sort-descend-btn {
     background-color: white;
     color: var(--primary-color);
     border: none;
@@ -120,6 +120,15 @@ header {
     font-size: 0.95rem;
     line-height: 1.4;
     overflow-wrap: break-word;
+}
+
+.note-date-time {
+    flex-grow: 1;
+    outline: none;
+    font-family: var(--font-main);
+    font-size: 0.90rem;
+    line-height: 1.4;
+    color: rgba(0, 0, 0, 0.651);
 }
 
 /* Note colors */
