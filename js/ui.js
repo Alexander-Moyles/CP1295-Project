@@ -13,6 +13,8 @@ import { saveNotes, exportNotesAsJson } from './storage.js';
 export function initializeUI(noteManager) {
     const noteBoard = document.getElementById('note-board');
     const exportBtn = document.getElementById('export-btn');
+    const sortAscendBtn = document.getElementById('sort-ascend-btn');
+    const sortDescendBtn = document.getElementById('sort-descend-btn');
 
     // Double click on board to create a new note
     noteBoard.addEventListener('dblclick', (event) => {
@@ -25,6 +27,38 @@ export function initializeUI(noteManager) {
     // Export button click handler
     exportBtn.addEventListener('click', () => {
         exportNotes(noteManager);
+    });
+
+    // Sort (ascending) button
+    sortAscendBtn.addEventListener('click', () => {
+        const notes = noteManager.getAllNotes();
+        if (notes.length > 0) {
+            notes.sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
+
+            let xPos = 0;
+            for (let note of notes) {
+                note.x = xPos;
+                note.y = 0;
+                xPos += 200;
+            }
+            /* Seems to work, but needs to refresh the screen upon completion */
+        }
+    });
+
+    // Sort (descending) button
+    sortDescendBtn.addEventListener('click', () => {
+        const notes = noteManager.getAllNotes();
+        if (notes.length > 0) {
+            notes.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
+
+            let xPos = 0;
+            for (let note of notes) {
+                note.x = xPos;
+                note.y = 0;
+                xPos += 200;
+            }
+            /* Seems to work, but needs to refresh the screen upon completion */
+        }
     });
 
     // Setup auto-save timer

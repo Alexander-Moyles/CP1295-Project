@@ -15,6 +15,9 @@ QuickNotes is a compact single-page web app that lets users create, move, edit, 
 - Automatic saving to localStorage
 - Fetch random productivity quotes via external API
 - Export notes as JSON file
++ Notes feature time and date of creation
++ Notes can be sorted based on time/date of creation
++ Images can be added to notes
 
 ## Technologies Used
 
@@ -42,7 +45,5 @@ QuickNotes is a compact single-page web app that lets users create, move, edit, 
 
 ## Development Timeline
 
-- Week 1: Basic layout, add-note feature, and drag-and-drop functionality
-- Week 2: Delete feature, Note class implementation, and localStorage implementation
-- Week 3: ES module refactoring and quote fetching with async/await
-- Week 4: JSON export, UI polish, documentation, and final submission
+- Week 1 (v0.1.1): Added initial starting code and added date and time of creation to notes.
+- Week 2 (v     ): Updated timestamps to pad minutes for proper time display, and added buttons which to sort notes by timestamp.

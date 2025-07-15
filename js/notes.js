@@ -67,7 +67,14 @@ export class Note {
 
         // Set date/time
         const noteDate = noteElement.querySelector('.note-date-time');
-        noteDate.textContent = this.creationDate;
+        let today = new Date(this.creationDate);
+
+        let mins = today.getMinutes().toString();
+        while (mins.length < 2) {
+            mins = mins.padStart(2, '0');
+        }
+
+        noteDate.textContent = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${mins}`
         
         // Store reference to the element
         this.element = noteElement;
@@ -123,7 +130,7 @@ export class Note {
      */
     dateOfCreation() {
         const today = new Date();
-        return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${today.getMinutes()}`
+        return today.toString();        
     }
 
     /**
