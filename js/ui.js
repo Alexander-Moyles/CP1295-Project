@@ -36,12 +36,17 @@ export function initializeUI(noteManager) {
             notes.sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
 
             let xPos = 0;
+            let yPos = 0;
             for (let note of notes) {
+                if (xPos >= screen.width) {
+                    xPos = 0;
+                    yPos += 200;
+                }
                 note.x = xPos;
-                note.y = 0;
+                note.y = yPos;
                 xPos += 200;
             }
-            /* Seems to work, but needs to refresh the screen upon completion */
+            renderAllNotes(noteManager);
         }
     });
 
@@ -52,12 +57,17 @@ export function initializeUI(noteManager) {
             notes.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
 
             let xPos = 0;
+            let yPos = 0;
             for (let note of notes) {
+                if (xPos >= screen.width) {
+                    xPos = 0;
+                    yPos += 200;
+                }
                 note.x = xPos;
-                note.y = 0;
+                note.y = yPos;
                 xPos += 200;
             }
-            /* Seems to work, but needs to refresh the screen upon completion */
+            renderAllNotes(noteManager);
         }
     });
 
