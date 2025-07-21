@@ -29,10 +29,12 @@
         <div class="note" tabindex="0">
             <div class="note-header">
                 <div class="note-date-time"></div>
-                <button class="image-btn" title="Attach an image">🖼️</button>
+                <input type="file" id="image-btn" accept="image/*" hidden />
+                <label class="image-lbl" for="image-btn">🖼️</label>
                 <button class="quote-btn" title="Add inspirational quote">💡</button>
                 <button class="delete-btn" title="Delete note">🗑️</button>
             </div>
+            <span class="file-chosen"></span>
             <div class="note-content" contenteditable="true"></div>
         </div>
     </template>

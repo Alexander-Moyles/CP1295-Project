@@ -100,7 +100,7 @@ header {
     margin-bottom: 0.5rem;
 }
 
-.note-header button {
+.note-header button, .image-lbl {
     background: none;
     border: none;
     cursor: pointer;
@@ -109,7 +109,7 @@ header {
     transition: opacity 0.2s;
 }
 
-.note-header button:hover {
+.note-header button:hover, .image-lbl:hover {
     opacity: 1;
 }
 

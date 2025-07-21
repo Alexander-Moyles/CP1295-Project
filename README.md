@@ -46,4 +46,5 @@ QuickNotes is a compact single-page web app that lets users create, move, edit, 
 ## Development Timeline
 
 - Week 1 (v0.1.1): Added initial starting code and added date and time of creation to notes.
-- Week 2 (v     ): Updated timestamps to pad minutes for proper time display, and added buttons which to sort notes by timestamp.
+- Week 2 (v0.2.2): Updated timestamps to pad minutes for proper time display, and added buttons which sort notes by timestamp.
+- Week 3 (v0.2.3): Added functionality to attach image files to notes.

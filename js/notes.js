@@ -20,7 +20,7 @@ export class Note {
      * @param {string} options.color - CSS class for note color
      * @param {string} options.creationDate - Date and Time of note creation
      */
-    constructor({ id = null, content = '', x = 0, y = 0, color = null, creationDate = '' }) {
+    constructor({ id = null, content = '', x = 0, y = 0, color = null, creationDate = '', attachedImage = null }) {
         this.id = id || this.generateId();
         this.content = content;
         this.x = x;
@@ -28,6 +28,7 @@ export class Note {
         this.color = color || this.getRandomColor();
         this.element = null;
         this.creationDate = creationDate || this.dateOfCreation();
+        this.attachedImage = attachedImage || this.image();
     }
 
     /**
@@ -120,7 +121,8 @@ export class Note {
             x: this.x,
             y: this.y,
             color: this.color,
-            creationDate: this.creationDate
+            creationDate: this.creationDate,
+            attachedImage: this.attachedImage
         };
     }
 
@@ -133,6 +135,20 @@ export class Note {
         return today.toString();        
     }
 
+    //TODO: Finish this
+    image() {
+        var x = document.createElement("IMG");
+        if (x.file) {
+            x.setAttribute("src", `${x.file.name}`);
+            x.setAttribute("maxWidth", "180");
+            x.setAttribute("maxHeight", "180");
+            if (this.element) {
+                const contentElement = this.element.querySelector('.file-chosen');
+                contentElement.appendChild(x);
+            }
+        }
+    }
+
     /**
      * Fetch a random productivity quote and add it to the note
      * @returns {Promise<string>} The quote that was added
@@ -140,7 +156,7 @@ export class Note {
     async addRandomQuote() {
         try {
             // Example of fetching from a quote API
-            const response = await fetch('https://api.quotable.io/random?tags=inspirational,success');
+            const response = await fetch('http://api.quotable.io/random?tags=inspirational,success');
             
             if (!response.ok) {
                 throw new Error('Failed to fetch quote');
