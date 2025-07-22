@@ -75,7 +75,7 @@ export class Note {
             mins = mins.padStart(2, '0');
         }
 
-        noteDate.textContent = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${mins}`
+        noteDate.textContent = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${mins}` // TODO: Maybe add display for seconds
         
         // Store reference to the element
         this.element = noteElement;
