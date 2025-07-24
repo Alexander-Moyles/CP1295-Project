@@ -107,6 +107,7 @@ header {
     font-size: 1rem;
     opacity: 0.6;
     transition: opacity 0.2s;
+    margin-right: -3.75px;
 }
 
 .note-header button:hover, .image-lbl:hover {
@@ -126,7 +127,7 @@ header {
     flex-grow: 1;
     outline: none;
     font-family: var(--font-main);
-    font-size: 0.70rem;
+    font-size: 0.69rem;
     line-height: 1.4;
     color: rgba(0, 0, 0, 0.651);
 }

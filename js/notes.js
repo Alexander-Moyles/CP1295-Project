@@ -19,6 +19,7 @@ export class Note {
      * @param {number} options.y - Y position on the board
      * @param {string} options.color - CSS class for note color
      * @param {string} options.creationDate - Date and Time of note creation
+     * @param {} options.attachedImage - Image attached to note
      */
     constructor({ id = null, content = '', x = 0, y = 0, color = null, creationDate = '', attachedImage = null }) {
         this.id = id || this.generateId();
@@ -28,7 +29,7 @@ export class Note {
         this.color = color || this.getRandomColor();
         this.element = null;
         this.creationDate = creationDate || this.dateOfCreation();
-        this.attachedImage = attachedImage || this.image();
+        this.attachedImage = attachedImage;
     }
 
     /**
@@ -75,7 +76,12 @@ export class Note {
             mins = mins.padStart(2, '0');
         }
 
-        noteDate.textContent = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${mins}` // TODO: Maybe add display for seconds
+        let secs = today.getSeconds().toString();
+        while (secs.length < 2) {
+            secs = secs.padStart(2, '0');
+        }
+
+        noteDate.textContent = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()} ${today.getHours()}:${mins}:${secs}`
         
         // Store reference to the element
         this.element = noteElement;
@@ -133,20 +139,6 @@ export class Note {
     dateOfCreation() {
         const today = new Date();
         return today.toString();        
-    }
-
-    //TODO: Finish this
-    image() {
-        var x = document.createElement("IMG");
-        if (x.file) {
-            x.setAttribute("src", `${x.file.name}`);
-            x.setAttribute("maxWidth", "180");
-            x.setAttribute("maxHeight", "180");
-            if (this.element) {
-                const contentElement = this.element.querySelector('.file-chosen');
-                contentElement.appendChild(x);
-            }
-        }
     }
 
     /**

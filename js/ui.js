@@ -29,24 +29,28 @@ export function initializeUI(noteManager) {
         exportNotes(noteManager);
     });
 
+    // Sorting logic for the ascending and descending sort buttons
+    const sort = (notes) => {
+        let xPos = 10;
+        let yPos = 10;
+        for (let note of notes) {
+            if ((xPos + 200) >= window.innerWidth) {
+                xPos = 10;
+                yPos += 210;
+            }
+            note.x = xPos;
+            note.y = yPos;
+            xPos += 210;
+        }
+        renderAllNotes(noteManager);
+    };
+
     // Sort (ascending) button
     sortAscendBtn.addEventListener('click', () => {
         const notes = noteManager.getAllNotes();
         if (notes.length > 0) {
             notes.sort((a, b) => new Date(a.creationDate) - new Date(b.creationDate));
-
-            let xPos = 0;
-            let yPos = 0;
-            for (let note of notes) {
-                if (xPos >= screen.width) {
-                    xPos = 0;
-                    yPos += 200;
-                }
-                note.x = xPos;
-                note.y = yPos;
-                xPos += 200;
-            }
-            renderAllNotes(noteManager);
+            sort(notes);
         }
     });
 
@@ -55,19 +59,7 @@ export function initializeUI(noteManager) {
         const notes = noteManager.getAllNotes();
         if (notes.length > 0) {
             notes.sort((a, b) => new Date(b.creationDate) - new Date(a.creationDate));
-
-            let xPos = 0;
-            let yPos = 0;
-            for (let note of notes) {
-                if (xPos >= screen.width) {
-                    xPos = 0;
-                    yPos += 200;
-                }
-                note.x = xPos;
-                note.y = yPos;
-                xPos += 200;
-            }
-            renderAllNotes(noteManager);
+            sort(notes);
         }
     });
 
