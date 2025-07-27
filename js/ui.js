@@ -118,6 +118,7 @@ export function setupNoteEventListeners(noteElement, note, noteManager) {
     const contentElement = noteElement.querySelector('.note-content');
     const deleteButton = noteElement.querySelector('.delete-btn');
     const quoteButton = noteElement.querySelector('.quote-btn');
+    const imageButton = noteElement.querySelector('.image-btn');
     
     // Track whether the note is being dragged
     let isDragging = false;
@@ -150,6 +151,15 @@ export function setupNoteEventListeners(noteElement, note, noteManager) {
             console.error('Failed to fetch quote:', error);
         }
     });
+
+    imageButton.addEventListener('change', () => {
+        const image = imageButton.files;
+        const imageDisplay = noteElement.querySelector(".note-img");
+
+        //TODO: Save image to storage to save it between reloads
+
+        imageDisplay.src = URL.createObjectURL(image[0]);
+    })
     
     // Drag start
     noteElement.addEventListener('mousedown', (event) => {

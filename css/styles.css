@@ -132,6 +132,11 @@ header {
     color: rgba(0, 0, 0, 0.651);
 }
 
+.note-img {
+    max-height: 180px;
+    max-width: 180px;
+}
+
 /* Note colors */
 .note-blue {
     background-color: var(--note-blue);

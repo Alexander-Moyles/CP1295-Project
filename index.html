@@ -29,23 +29,18 @@
         <div class="note" tabindex="0">
             <div class="note-header">
                 <div class="note-date-time"></div>
-                <input type="file" id="image-btn" class="image-btn" accept="image/*" onchange="imageUpload()" hidden />
+                <input type="file" id="image-btn" class="image-btn" accept="image/*" hidden />
                 <label class="image-lbl" for="image-btn">🖼️</label>
                 <button class="quote-btn" title="Add inspirational quote">💡</button>
                 <button class="delete-btn" title="Delete note">🗑️</button>
             </div>
-            <span class="file-chosen"></span>
+            <div>
+                <img src="" class="note-img">
+            </div>
             <div class="note-content" contenteditable="true"></div>
         </div>
     </template>
 
-    <script>
-        function imageUpload() {
-            var x = document.querySelector("#image-btn");
-            var y = fileName = x.data;
-            console.log(y);
-        }
-    </script>
     <footer>
         <p>CP1295 Mini-Project - QuickNotes</p>
     </footer>
