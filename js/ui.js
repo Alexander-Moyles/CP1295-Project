@@ -5,6 +5,7 @@
 
 import { createNote } from './notes.js';
 import { saveNotes, exportNotesAsJson } from './storage.js';
+import { getFileDataUrl } from './image.js';
 
 /**
  * Initialize UI event listeners
@@ -153,10 +154,21 @@ export function setupNoteEventListeners(noteElement, note, noteManager) {
     });
 
     // Image button handler
-    imageButton.addEventListener('change', () => {
-        const image = imageButton.files;
-        note.updateImage(image[0]);
-    })
+    imageButton.addEventListener('change', (event) => {        
+        // Gets the first selected file
+        const file = event.target.files[0];
+
+        if (file) {
+            getFileDataUrl(file).then(url => {
+            // Use the data URL, for example displaying it in an img element
+            noteElement.querySelector('.note-img').src = url;
+            note.updateImage(url);
+
+            }).catch(error => {
+            console.error("Error reading the file:", error);
+            });
+        }
+    });
     
     // Drag start
     noteElement.addEventListener('mousedown', (event) => {

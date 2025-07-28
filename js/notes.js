@@ -3,6 +3,8 @@
  * Contains the Note class and related functions for note manipulation
  */
 
+import { getFileDataUrl } from './image.js';
+
 // Array of note colors
 const NOTE_COLORS = ['note-yellow', 'note-blue', 'note-green', 'note-pink'];
 
@@ -19,7 +21,7 @@ export class Note {
      * @param {number} options.y - Y position on the board
      * @param {string} options.color - CSS class for note color
      * @param {string} options.creationDate - Date and Time of note creation
-     * @param {File} options.attachedImage - Image attached to note
+     * @param {Data-URL} options.attachedImage - Image attached to note
      */
     constructor({ id = null, content = '', x = 0, y = 0, color = null, creationDate = '', attachedImage = '' }) {
         this.id = id || this.generateId();
@@ -69,8 +71,9 @@ export class Note {
 
         // Set Image
         const imageDisplay = noteElement.querySelector(".note-img");
-        console.log(this.attachedImage);
-        //imageDisplay.src = URL.createObjectURL(this.attachedImage);
+        if (imageDisplay != null) {
+            imageDisplay.src = this.attachedImage;
+        }
 
         // Set date/time
         const noteDate = noteElement.querySelector('.note-date-time');
@@ -123,15 +126,10 @@ export class Note {
 
     /**
      * Update the note's attached image
-     * @param {File} attachment - attached image
+     * @param {Data-URL} attachment - attached image
      */
     updateImage(attachment) {
-        //TODO: Store image seperatley and call it from a reference
-
-        if (this.element) {
-            const imageDisplay = this.element.querySelector(".note-img");
-            imageDisplay.src = URL.createObjectURL(attachment);
-        }
+        this.attachedImage = attachment;
     }
 
     /**
