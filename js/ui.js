@@ -152,13 +152,10 @@ export function setupNoteEventListeners(noteElement, note, noteManager) {
         }
     });
 
+    // Image button handler
     imageButton.addEventListener('change', () => {
         const image = imageButton.files;
-        const imageDisplay = noteElement.querySelector(".note-img");
-
-        //TODO: Save image to storage to save it between reloads
-
-        imageDisplay.src = URL.createObjectURL(image[0]);
+        note.updateImage(image[0]);
     })
     
     // Drag start

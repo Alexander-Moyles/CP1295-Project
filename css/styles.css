@@ -127,7 +127,7 @@ header {
     flex-grow: 1;
     outline: none;
     font-family: var(--font-main);
-    font-size: 0.69rem;
+    font-size: 0.65rem;
     line-height: 1.4;
     color: rgba(0, 0, 0, 0.651);
 }

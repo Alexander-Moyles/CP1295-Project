@@ -19,9 +19,9 @@ export class Note {
      * @param {number} options.y - Y position on the board
      * @param {string} options.color - CSS class for note color
      * @param {string} options.creationDate - Date and Time of note creation
-     * @param {} options.attachedImage - Image attached to note
+     * @param {File} options.attachedImage - Image attached to note
      */
-    constructor({ id = null, content = '', x = 0, y = 0, color = null, creationDate = '', attachedImage = null }) {
+    constructor({ id = null, content = '', x = 0, y = 0, color = null, creationDate = '', attachedImage = '' }) {
         this.id = id || this.generateId();
         this.content = content;
         this.x = x;
@@ -66,6 +66,11 @@ export class Note {
         // Set content
         const contentElement = noteElement.querySelector('.note-content');
         contentElement.textContent = this.content;
+
+        // Set Image
+        const imageDisplay = noteElement.querySelector(".note-img");
+        console.log(this.attachedImage);
+        //imageDisplay.src = URL.createObjectURL(this.attachedImage);
 
         // Set date/time
         const noteDate = noteElement.querySelector('.note-date-time');
@@ -113,6 +118,19 @@ export class Note {
         if (this.element) {
             const contentElement = this.element.querySelector('.note-content');
             contentElement.textContent = content;
+        }
+    }
+
+    /**
+     * Update the note's attached image
+     * @param {File} attachment - attached image
+     */
+    updateImage(attachment) {
+        //TODO: Store image seperatley and call it from a reference
+
+        if (this.element) {
+            const imageDisplay = this.element.querySelector(".note-img");
+            imageDisplay.src = URL.createObjectURL(attachment);
         }
     }
 
