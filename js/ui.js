@@ -5,6 +5,7 @@
 
 import { createNote } from './notes.js';
 import { saveNotes, exportNotesAsJson } from './storage.js';
+import { getFileDataUrl } from './image.js';
 
 /**
  * Initialize UI event listeners
@@ -118,6 +119,7 @@ export function setupNoteEventListeners(noteElement, note, noteManager) {
     const contentElement = noteElement.querySelector('.note-content');
     const deleteButton = noteElement.querySelector('.delete-btn');
     const quoteButton = noteElement.querySelector('.quote-btn');
+    const imageButton = noteElement.querySelector('.image-btn');
     
     // Track whether the note is being dragged
     let isDragging = false;
@@ -148,6 +150,23 @@ export function setupNoteEventListeners(noteElement, note, noteManager) {
             
             // Display error in console
             console.error('Failed to fetch quote:', error);
+        }
+    });
+
+    // Image button handler
+    imageButton.addEventListener('change', (event) => {        
+        // Gets the first selected file
+        const file = event.target.files[0];
+
+        if (file) {
+            getFileDataUrl(file).then(url => {
+            // Use the data URL, for example displaying it in an img element
+            noteElement.querySelector('.note-img').src = url;
+            note.updateImage(url);
+
+            }).catch(error => {
+            console.error("Error reading the file:", error);
+            });
         }
     });
     
