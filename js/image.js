@@ -4,7 +4,7 @@
 
 /**
  * Converts image file to a usable data-url
- * @param {*} file 
+ * @param {image} file 
  * @returns Data-URL
  */
 export function getFileDataUrl(file) {

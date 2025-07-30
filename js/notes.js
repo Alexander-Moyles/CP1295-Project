@@ -3,8 +3,6 @@
  * Contains the Note class and related functions for note manipulation
  */
 
-import { getFileDataUrl } from './image.js';
-
 // Array of note colors
 const NOTE_COLORS = ['note-yellow', 'note-blue', 'note-green', 'note-pink'];
 
