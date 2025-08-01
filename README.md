@@ -1,10 +1,12 @@
 # QuickNotes
 
-A browser-based sticky note application that allows users to create, edit, move, and delete virtual sticky notes directly in the browser.
+A browser-based sticky note application that allows users to create, edit, move, sort, and delete virtual sticky notes directly in the browser.
 
 ## Purpose
 
-QuickNotes is a compact single-page web app that lets users create, move, edit, and delete virtual sticky notes directly in the browser. The application demonstrates key web development concepts including DOM manipulation, custom objects, browser storage, asynchronous JavaScript, ES modules, and JSON handling.
+QuickNotes is a compact single-page web app that lets users create, move, edit, and delete virtual sticky notes directly in the browser.
+Notes can also be sorted based on creation timestamp (ascending/descending) and can have images attachedd to them.
+The application demonstrates key web development concepts including DOM manipulation, custom objects, browser storage, asynchronous JavaScript, ES modules, and JSON handling.
 
 ## Features
 
@@ -15,9 +17,9 @@ QuickNotes is a compact single-page web app that lets users create, move, edit, 
 - Automatic saving to localStorage
 - Fetch random productivity quotes via external API
 - Export notes as JSON file
-+ Notes feature time and date of creation
-+ Notes can be sorted based on time/date of creation
-+ Images can be added to notes
+- Notes feature time and date of creation
+- Notes can be sorted based on time/date of creation
+- Images can be added to notes
 
 ## Technologies Used
 
@@ -36,11 +38,12 @@ QuickNotes is a compact single-page web app that lets users create, move, edit, 
 - `js/notes.js`: Note class definition and management
 - `js/ui.js`: UI-related functions and event handlers
 - `js/storage.js`: Functions for data persistence
+- `js/image.js`: Function for converting uploaded images to usable Data-URL's
 
 ## Getting Started
 
 1. Clone this repository
-2. Open index.html in your browser
+2. Open index.html in your browser (must be a live server)
 3. Start creating notes!
 
 ## Development Timeline
@@ -48,4 +51,4 @@ QuickNotes is a compact single-page web app that lets users create, move, edit, 
 - Week 1 (v0.1.1): Added initial starting code and added date and time of creation to notes.
 - Week 2 (v0.2.2): Updated timestamps to pad minutes for proper time display, and added buttons which sort notes by timestamp.
 - Week 3 (v0.2.4): Added image upload button (functionality WIP), and improved sorting logic.
-- Week 4: Finished image upload functionality.
+- Week 4 (v1.0.0): Finished image upload functionality, cleaned up documentation, and final submission to GitHub.
